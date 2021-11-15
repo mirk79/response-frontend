@@ -1,0 +1,136 @@
+.sideslider .mainnav {
+    @include ts(16,20);
+    .nav-modules, .nav-specialpages {
+        h3 {
+            display: block;
+            // background-color: darkblue;
+            @include ts(20,24);
+            font-weight: 700;
+            padding: 13px 15px;
+            // border-bottom: 1px solid $grauXB;
+        }
+        ul.menu {
+            margin-bottom: 50px;
+            li.menu-item {
+                &:first-child {
+                    border-top: 1px solid $grauXB;
+                }
+                a.menu-link {
+                    display: block;
+                    position: relative;
+                    // background-color: blue;
+                    // @include ts(20,24);
+                    @include ts(16,20);
+                    font-weight: 400;
+                    padding: 10px 15px;
+                    transition: padding 0.1s 0s ease-out;
+                    border-bottom: 1px solid $grauXB;
+                    text-decoration: none;
+                    &:hover,
+                    &:active {
+                        padding: 10px 10px 10px 20px;
+                    }
+                    
+                }
+            }
+        }
+    }
+    .nav-modules {
+        ul.menu {
+            li.menu-item {
+                a.menu-link {
+                    &.nuxt-link-active {
+                        // font-weight: 500;
+                        &::before {
+                            content: "▸";
+                            display: inline-block;
+                            position: absolute;
+                            left: 2px;
+                            // background-color: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .nav-specialpages {
+        ul.menu {
+            li.menu-item {
+                a.menu-link {
+                    &.homepage,
+                    &.glossary {
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            position: absolute;
+                            width: 20px;
+                            height: 20px;
+                            left: 15px;
+                            // background-color: red;
+                            background-repeat: no-repeat;
+                            background-size: 20px;
+                            background-position: center;
+                        }
+                        padding-left: 42px;
+                        &:hover,
+                        &:active {
+                            padding-left: 47px;
+                        }
+                    }
+                    &.homepage {
+                        &::before {
+                            top: 10px;
+                            background-image: url("../assets/img/nav-home.svg");
+                        }
+                        &.nuxt-link-exact-active {
+                            &::before {
+                                background-image: url("../assets/img/nav-home-active.svg");
+                            }
+                        }
+                    }
+                    &.glossary {
+                        &::before {
+                            top: 11px;
+                            background-image: url("../assets/img/nav-glossary.svg");
+                        }
+                        &.nuxt-link-active {
+                            &::before {
+                                background-image: url("../assets/img/nav-glossary-active.svg");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .nav-pages {
+        ul.menu {
+            li.menu-item {
+                display: inline-block;
+                // background-color: blue;
+                &::after {
+                    content: " | ";
+                    margin-left: 2px;
+                    margin-right: 5px;
+                }
+                &:last-child {
+                    &::after {
+                        content: "";
+                        margin-left: 0px;
+                        margin-right: 0px;
+                    }
+                }
+                a.menu-link {
+                    text-decoration: none;
+                    &:hover,
+                    &:active {
+                        text-decoration: underline;
+                    }
+                    &.nuxt-link-exact-active {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

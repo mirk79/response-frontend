@@ -1,0 +1,280 @@
+.audiotracks {
+    // @extend .small;
+    font-size: 0px;
+    line-height: 0;
+    color: $white;
+    // background-color: $grauXD;
+    background-color: $grauXD;
+    position: fixed;
+    z-index: 80;
+    text-align: center;
+    // bottom: -52px;
+    bottom: -80px;
+    // bottom: -300px;
+    transition: bottom .2s ease-out;
+    left: 50%;
+    margin-left: -240px;
+    width: 480px;
+    // height: 52px;
+    height: 80px;
+    // height: 300px;
+    box-shadow: 0px 0px 10px 0px rgba($grauXD,.3);
+    // display: block;
+    @media(max-width: $xs - 1) {
+        left: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+    &.disabled {
+        // opacity: .5;
+        // display: none;
+        bottom: -110px;
+    }
+
+    /* toggle button */
+    .audiotracksToggle {
+        display: inline-block;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        margin-left: -25px;
+        // background-color: blue;
+        border-radius: 25px 25px 0 0;
+        width: 50px;
+        height: 25px;
+        background-color: $grauXD;
+        background-image: url("../assets/img/audiotracks-open.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        box-shadow: 0px 0px 10px 0px rgba($grauXD,.3);
+        .audiotracksToggleSVG {
+            display: none;
+        }
+    }
+
+    &.playing {
+        .audiotracksToggle {
+            // background-image: url("../assets/img/audiotracks-playing.svg");
+            .audiotracksToggleSVG {
+                display: block;
+            }
+        }
+    }
+    &.active {
+        bottom: 0px;
+        .audiotracksToggle {
+            background-image: url("../assets/img/audiotracks-close.svg");
+            // background-color: red;
+            .audiotracksToggleSVG {
+                display: none;
+            }
+        }
+    }
+
+    /* Plyr variables */
+    /* captions */
+    // --plyr-font-size-base: 20px;
+    // --plyr-font-size-large: 20px;
+    // --plyr-font-size-small: 20px;
+    // --plyr-captions-text-color: red;
+    // --plyr-captions-background: rgba($black,.8);
+    // --plyr-font-family: "freight-sans-pro",sans-serif;
+    // --plyr-font-family: "freight-sans-condensed-pro",sans-serif;
+    /*  controls */
+    --plyr-color-main: $blau;
+    --plyr-control-radius: 0px;
+    --plyr-audio-controls-background: $grauD;
+    --plyr-audio-control-color: $white;
+    --plyr-audio-control-color-hover: $white;
+    --plyr-audio-control-background-hover: transparent;
+    --plyr-video-controls-background: $grauD;
+    --plyr-video-control-color: $white;
+    --plyr-video-control-color-hover: $white;
+    --plyr-video-control-background-hover: transparent;
+    --plyr-video-background: transparent;
+    /* sliders */
+    --plyr-range-track-height: 3px;
+    --plyr-range-thumb-height: 15px;
+    --plyr-range-fill-background: $grauXB;
+    --plyr-audio-range-track-background: rgb(103,105,115); // $grauD, geht irgendwie nicht als Variable ...
+    --plyr-video-progress-buffered-background: rgb(103,105,115);
+    --plyr-range-thumb-shadow: 0 0 0 1.5px rgb(53,56,67); // $grauXD, geht irgendwie nicht als Variable ...
+    --plyr-range-track-border-radius: 0px; // custom hinzugefügt ...
+    --plyr-audio-range-thumb-active-shadow-color: rgb(103,105,115); // geht irgendwie auch nicht als Variable ...
+    --plyr-range-thumb-active-shadow-width: 3px;
+    /* audio */
+    // --plyr-audio-range-track-background: $grauD;
+    // --plyr-audio-progress-buffered-background: $grauD;
+
+    /* plyr style overrides */
+    .plyr__controls .plyr__controls__item.plyr__time {
+        width: 60px;
+        // background-color: darkcyan;
+    }
+    .plyr {
+        font-weight: 500;
+        font-feature-settings: "lnum","pnum";
+    }
+    /* Plyr video style overrides to fit with audio interface needs ... */
+    .plyr.plyr--video {
+        overflow: visible;
+        .plyr__video-wrapper {
+            display: none;
+        }
+        .plyr__controls {
+            position: relative;
+            width: 100%;
+            // padding: 0px 0px 2px 0px;
+            padding: var(--plyr-control-spacing, 10px);
+            padding-bottom: 2px;
+        }
+        &.plyr--hide-controls {
+            .plyr__controls {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+        .plyr__captions {
+            display: absolute;
+            bottom: 80px;
+            // top: 0;
+            transform: translateY(0%);
+            z-index: 10;
+            padding: 0px !important;
+            .plyr__caption {
+                background-color: rgba($black,.8);
+                color: $white;
+            }
+        }
+        &:not(.plyr--hide-controls) {
+            .plyr__controls:not(:empty) ~ .plyr__captions {
+                transform: translateY(0%);
+            }
+        }
+
+    }
+
+    /* trackmarker */
+    .trackmarker {
+        position: absolute;
+        // top: 17px;
+        top: 20px;
+        // left: 47px;
+        // left: 54px;
+        left: 18px;
+        // right: 167px;
+        // right: 174px;
+        right: 208.5px;
+        // height: 18px;
+        height: 12px;
+        width: auto;
+        display: block;
+        // background-color: rgba(red,.8);
+        // @extend .small;
+        z-index: 1;
+        // cursor: pointer;
+        .marker {
+            // font-size: 6px;
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            transform: translateX(-0.5px);
+            background-color: $grauD;
+            &.passed {
+                background-color: $white;
+            }
+        }
+    }
+    .plyr {
+        z-index: 2;
+        // background-color: rgba(darkcyan,.5);
+    }
+    .plyr--audio .plyr__controls {
+        padding-bottom: 2px;
+    }
+    .plyr__controls {
+        // z-index: 1;
+        .plyr__volume {
+            width: 90px;
+        }
+        /* mute button override */
+        button[data-plyr='mute'],
+        button[data-plyr='captions'] {
+            height: 32px;
+            width: 32px;
+            // background-color: green;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 32px;
+            // display: inline-block;
+            svg {
+                display: none;
+            }
+        }
+        button[data-plyr='mute'] {
+            background-image: url("../assets/img/audiotracks-control-unmuted.svg");
+            &.plyr__control--pressed {
+                background-image: url("../assets/img/audiotracks-control-muted.svg");
+            }
+        }
+        button[data-plyr='captions'] {
+            // background-color: green;
+            background-image: url("../assets/img/audiotracks-control-captions.svg");
+            opacity: .4;
+            &:hover,
+            &:active {
+                opacity: 1;
+            }
+            &.plyr__control--pressed {
+                // background-color: red;
+                 // ../assets/img/audiotracks-control-nocaptions.svg 
+                // background-image: url("../assets/img/audiotracks-control-nocaptions.svg");
+                opacity: 1;
+            }
+        }
+    }
+    /* neue tracklist vor / zurück / play-pause buttons */
+    .tracklistNav {
+        .slidesCurrentTrackmarker {
+            display: inline-block;
+            @extend .small;
+            color: $white;
+        }
+        // padding-bottom: 2px;
+        button {
+            height: 32px;
+            width: 32px;
+            margin: 0 2px;
+            // background-color: orange;
+            // background-image: url(/assets/img/);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 32px;
+            &.tracklist {
+                &.prev {
+                    background-image: url("../assets/img/audiotracks-control-prev.svg");
+                }
+                &.next {
+                    background-image: url("../assets/img/audiotracks-control-next.svg");
+                }
+            }
+            &.playButton {
+                background-image: url("../assets/img/audiotracks-control-play.svg");
+                &.playing {
+                    background-image: url("../assets/img/audiotracks-control-pause.svg");
+                }
+                &.paused {
+                    background-image: url("../assets/img/audiotracks-control-play.svg");
+                }
+            }
+            &.disabled {
+                opacity: .3;
+                cursor: unset;
+            }
+        }
+        
+    }
+}

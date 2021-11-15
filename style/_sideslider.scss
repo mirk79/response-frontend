@@ -1,0 +1,132 @@
+.sideslider {
+    
+    .closeSidesliders {
+        position: fixed;
+        top: 0px;
+        // bottom: 0px;
+        // left: 0px;
+        right: 0px;
+        height: 0%;
+        width: 0%;
+        background-color: rgba($black,0);
+        transition: background-color 0.3s 0s ease-out, height 0s 0.3s ease-out, width 0s 0.3s ease-out;
+        z-index: 1;
+        cursor: pointer;
+    }
+    &.active {
+        .closeSidesliders {
+            transition: background-color 0.3s 0s ease-out, height 0s 0s ease-out, width 0s 0s ease-out;
+            background-color: rgba($black,.5);
+            height: 100%;
+            width: 100%;
+        }
+    }
+    /* gemeinsames Setup */
+    .mainnav-container, .feuser-container {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        height: 100vh;
+        z-index: 100;
+    }
+    .mainnav, .feuser-area {
+        position: absolute;
+        z-index: 100;
+        display: block;
+        top: 0;
+        bottom: 0;
+        transition: transform 0.3s 0s ease-out;
+        background-color: $grauXD;
+        color: $grauXB;
+        a {
+            color: $grauXB;
+        }
+        padding: 60px 10px 30px;
+    }
+    .mainnav-toggle, .feuser-toggle {
+        position: absolute;
+        z-index: 110;
+        top: 0px;
+        display: block;
+        font-size: 0;
+        cursor: pointer;
+        transition: transform .3s ease-out, background-color .2s ease-out;
+        // transform: translate(6px,6px);
+        background-color: white;
+        // background-image: url("../assets/img/sidebarbuttons_neu/btn_slide_nav.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 44px;
+        width: 44px;
+        height: 44px;
+    }
+    /* Main Navigation (links) */
+    .mainnav-container {
+        left: 0px;
+        .mainnav-toggle {
+            left: 0px;
+            transform: translate(10px,10px);
+            background-image: url("../assets/img/sideslider-nav.svg");
+        }
+        .mainnav {
+            left: 0px;
+            width: 300px;
+            transform: translate(-300px,0px);
+            @media (min-width: $xs) {
+                width: 420px;
+                transform: translate(-420px,0px);
+            }
+            box-shadow: 0px 0px 10px 0px rgba($black,0);
+        }
+        &.active {
+            .mainnav-toggle {
+                background-color: transparent !important;
+                background-image: url("../assets/img/sideslider-close-left.svg");
+                transform: translate(246px,10px);
+                @media (min-width: $xs) {
+                    transform: translate(366px,10px);
+                }
+                
+            }
+            .mainnav {
+                transform: translate(0px,0px);
+                box-shadow: 0px 0px 10px 0px rgba($black,.5);
+            }
+        }
+    }
+
+    /* FE User Area (rechts) */
+    .feuser-container {
+        right: 0px;
+        .feuser-toggle {
+            right: 0px;
+            transform: translate(-10px,10px);
+            background-image: url("../assets/img/sideslider-user-login.svg");
+        }
+        .feuser-area {
+            right: 0px;
+            width: 300px;
+            // transform: translate(-380px,0px);
+            transform: translate(300px,0px);
+            @media (min-width: $xs) {
+                width: 420px;
+                transform: translate(420px,0px);
+            }
+            box-shadow: 0px 0px 10px 0px rgba($black,0);
+        }
+        &.active {
+            .feuser-toggle {
+                background-color: transparent !important;
+                background-image: url("../assets/img/sideslider-close-right.svg");
+                transform: translate(-246px,10px);
+                @media (min-width: $xs) {
+                    transform: translate(-366px,10px);
+                }
+            }
+            .feuser-area {
+                transform: translate(0px,0px);
+                box-shadow: 0px 0px 10px 0px rgba($black,.5);
+            }
+        }
+    }
+}

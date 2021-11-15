@@ -1,0 +1,70 @@
+#app {
+    transition: background-color .2s ease-out;
+}
+
+.section-main {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    // right: 0px;
+    bottom: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    // background-color: rgba(yellow,.3);
+    // padding: 5px 10px;
+    padding: 10px;
+}
+.isPageLayout .section-main {
+    top: 0px;
+}
+.isSlideLayout .section-main {
+    top: 65px;
+    border-top: 1px solid $grauXD;
+}
+
+.section-main {
+    .pagecontent {
+        // background-color: rgba(yellow,.3);
+        position: absolute;
+        // position: relative;
+        display: block;
+        // display: contents;
+        // width: 100%;
+        // width: auto;
+        width: calc(100% - 20px);
+        // left: 0px;
+        // right: 0px;
+        // height: 100%;
+        // background-color: rgba(yellow,.3);
+        // * {
+        //     -moz-box-sizing: content-box;
+        //     -webkit-box-sizing: content-box;
+        //     box-sizing: content-box;
+        // }
+        @media (min-width: $xxl) {
+            // background-color: rgba(yellow,.3);
+            width: $xxl - 20;
+            left: 50%;
+            margin-left: -($xxl - 20) / 2;
+            // margin: 0 auto;
+            // transform: translate(-420px,0px);
+        }
+    }
+}
+
+/* Grundraster auf Seiten (nicht Folien) */
+.isPageLayout {
+    .section-main {
+        // padding: 10px 60px;
+        padding: 60px;
+        .pagecontent {
+            // background-color: lightgreen;
+            width: calc(100% - 100px);
+            @media (min-width: $xxl) {
+                width: $xxl - 120;
+                left: 50%;
+                margin-left: -($xxl - 120) / 2;
+            }
+        }
+    }
+}

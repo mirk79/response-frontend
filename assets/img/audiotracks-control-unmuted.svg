@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .a {
+        fill: #fff;
+      }
+
+      .b {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="a" points="16 9 12 13 8 13 8 19 12 19 16 23 16 9"/>
+    <path class="b" d="M19.06,12.5a7,7,0,0,1,0,7"/>
+    <path class="b" d="M22.53,10.5a11,11,0,0,1,0,11"/>
+  </g>
+</svg>

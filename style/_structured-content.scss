@@ -1,0 +1,102 @@
+/* Gridelements */
+/* Primär-Farbvarianten */
+$gridRowWidths: 1,2,3,4,5,6,7,8,9,10,11,12;
+// $gridRowBreakpoints: ('small', $xs), ('medium', $m), ('large', $xl);
+$gridRowBreakpoints: ('medium', $l), ('small', $s);
+
+.ce-structured-content {
+    margin: 0 (-($grid-gap/2));
+    > .ce-header {
+        margin: 0 ($grid-gap/2);
+    } 
+    .grid {
+        // background-color: rgba(green,.3);
+        display: block;
+        text-align: left;
+        // margin-top: - $grid-gap / 2;
+        // margin-bottom: - $grid-gap / 2;
+        margin-bottom: -$grid-gap;
+        .gridcolumn {
+            display: inline-block;
+            vertical-align: top;
+            // margin-top: $grid-gap / 2;
+            margin-bottom: $grid-gap;
+            // margin-right: $grid-gap;
+            &:last-child {
+                margin-right: 0;
+            }
+            // background-color: rgba(yellow,.3);
+        }
+        &.gridlayout_1ColumnGrid {
+            .gridcolumn {
+                width: 100%;
+                // max-width: 100%;
+            }
+        }
+        &.flexbox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            .gridcolumn {
+                flex: 1 1 auto;
+                order: 0;
+                display: flex;
+                align-content: flex-start;
+                flex-direction: column;
+                > .ce-frame {
+                    flex: 1 1 auto;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: visible !important;
+                }
+            }
+        }
+        
+    }
+}
+
+
+
+@each $width in $gridRowWidths {
+    .grid .gridcolumn {
+        &.large-width-#{$width} {
+            // width: 100%/12 * $width;
+            @if $width == 12 {
+                width: 100%;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+            @else {
+                // width: calc( #{100%/12 * $width} - #{$grid-gap/12 * ($width * 2)} );
+                width: #{100%/12 * $width};
+                max-width: #{100%/12 * $width};
+                flex-basis: #{100%/12 * $width};
+            }
+        }
+        @each $bp, $bpval in $gridRowBreakpoints {
+            @media (max-width: $bpval - 1) {
+                &.#{$bp}-width-#{$width} {
+                    // width: 100%/12 * $width;
+                    @if $width == 12 {
+                        width: 100%;
+                        max-width: 100%;
+                        // -webkit-flex-basis: 100%;
+                        // -ms-flex-preferred-size: 100%;
+                        flex-basis: 100%;
+                    }
+                    @else {
+                        // width: 100%/12 
+                        // width: calc( #{100%/12 * $width} - #{$grid-gap/12 * $width} );
+                        width: #{100%/12 * $width};
+                        max-width: #{100%/12 * $width};
+                        flex-basis: #{100%/12 * $width};
+                    }
+                }
+            }
+        }
+    }
+    
+    
+}
+

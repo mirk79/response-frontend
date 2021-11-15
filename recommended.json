@@ -1,0 +1,18 @@
+{
+  "name": "response-platform",
+  "author": "Mirko Leyh",
+  "description": "response-platform TYPO3 PWA Site",
+  "pm": "yarn",
+  "ui": "none",
+  "server": "none",
+  "language": "js",
+  "features": ["pwa","typo","skin"],
+  "linter": ["eslint","prettier"],
+  "test": "jest",
+  "mode": "universal",
+  "devTools": "jsconfig.json",
+  "api": "https://response-platform.ddev.site/api",
+  "cert": "unsafe",
+  "locales":["de","en"],
+  "locale":["de"]
+}

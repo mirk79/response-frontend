@@ -1,0 +1,31 @@
+/*
+ Typekit Fonts
+*/
+@mixin tc-std {
+    font-family: "freight-sans-pro",sans-serif;
+    /* 300 400 500 600 700 900 */
+    /* normal / italic */
+}
+@mixin tc-cnd {
+    font-family: "freight-sans-condensed-pro",sans-serif;
+    /* 300 400 500 600 700 900 */
+    /* normal / italic */
+}
+
+/* 
+ Typo Sizes mixin
+ */
+$default-fontsize: 16px !default;
+@mixin ts($fontsize, $lineheight) {
+    @if $fontsize {
+        font-size: $fontsize + px;
+        @if $lineheight {
+            line-height: $lineheight + px;
+        } @else {
+            line-height: ($fontsize + 4) + px;
+        }
+    } @else {
+        font-size: $default-fontsize;
+        line-height: ($default-fontsize + 4) + px;
+    }
+}

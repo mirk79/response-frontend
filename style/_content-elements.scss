@@ -1,0 +1,38 @@
+.ce-frame {
+    margin: $grid-gap / 2;
+    // max-width: 100%;
+    // display: inline-block;
+    &.layout-highlightBox {
+        padding: 10px;
+        // background-color: $grauXB;
+        background-color: lighten($blau,60);
+    }
+    &.layout-borderedBox {
+        padding: 10px;
+        border: 2px solid $blau;
+    }
+    
+}
+.ce-header {
+    margin-bottom: $grid-gap / 2;
+}
+
+/* Abstand davor/danach Optionen ... */
+$spaceOptionsSetup: 
+    // ('default',     $grid-gap / 2), 
+    ('extra-small', 1 * $grid-gap),
+    ('small',       2 * $grid-gap),
+    ('medium',      3 * $grid-gap),
+    ('large',       4 * $grid-gap),
+    ('extra-large', 5 * $grid-gap);
+
+.ce-frame {
+    @each $size, $space in $spaceOptionsSetup {
+        &.space-before-#{$size} {
+            margin-top: #{$space};
+        }
+        &.space-after-#{$size} {
+            margin-bottom: #{$space};
+        }
+    }
+}

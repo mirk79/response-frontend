@@ -1,0 +1,153 @@
+.ce-gallery {
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    // background-color: rgba(darkcyan,.2);
+
+    /* Varianten in Position und Ausrichtung */
+    // &.aboveText {}
+    // &.belowText {}
+    &.inText {
+        display: flow-root;
+        .ce-gallery__outer-container {
+            width: calc( 50% - 10px );
+            @media(max-width: $m - 1) {
+                width: 100%;
+            }
+        }
+        &.rightPos {
+            .ce-gallery__outer-container {
+                float: right;
+                margin-left: $grid-gap;
+                @media(max-width: $m - 1) {
+                    margin-left: 0px;
+                }
+            }
+        }
+        &.leftPos {
+            .ce-gallery__outer-container {
+                float: left;
+                margin-right: $grid-gap;
+                @media(max-width: $m - 1) {
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+    &.nextToText {
+        display: flow-root;
+        .ce-gallery__text, 
+        .ce-gallery__outer-container {
+            width: calc( 50% - 10px );
+            display: inline-block;
+            vertical-align: top;
+            @media(max-width: $m - 1) {
+                width: 100%;
+            }
+        }
+        &.rightPos {
+            .ce-gallery__outer-container {
+                float: right;
+                @media(max-width: $m - 1) {
+                    float: none;
+                }
+            }
+        }
+        &.leftPos {
+            .ce-gallery__text {
+                float: right;
+                @media(max-width: $m - 1) {
+                    float: none;
+                }
+            }
+        }
+    }
+
+    /* Varianten Bildunterschriften ... */
+    /* ... unter dem Bild */
+    &.ce-gallery--caption-below {
+        .ce-gallery__item {
+            figcaption {
+                @extend .small;
+            }
+        }
+    }
+    /* ... rechts bzw. links neben den Bildern */
+    &.ce-gallery--caption-right, 
+    &.ce-gallery--caption-left {
+        // position: relative;
+        .ce-gallery__outer-container {
+            position: relative;
+            // background-color: rgba(orange,.3);
+            display: flow-root;
+            width: 100%;
+            // vertical-align: top;
+            .ce-gallery__container,
+            .ce-gallery__captions {
+                width: calc( 50% - 10px );
+                vertical-align: top;
+                display: inline-block;
+                // background-color: rgba(lightblue,.5);
+            }
+            ul.ce-gallery__captions {
+                padding-left: 1.25rem;
+                li.ce-gallery__item-caption {
+                    @include ts(24,28);
+                    // font-weight: 300;
+                    font-weight: 600;
+                    // font-weight: 700;
+                    display: list-item;
+                    list-style: disc;
+                    // padding-left: 1.25rem;
+                    margin-bottom: 0.25rem;
+                    // padding-bottom: 0.25rem;
+                    // border-bottom: 1px solid $black;
+                }
+            }
+        }
+    }
+    &.ce-gallery--caption-right {
+        .ce-gallery__container {
+            float: left;
+        }
+        .ce-gallery__captions {
+            float: right;
+        }
+    }
+    &.ce-gallery--caption-left {
+        .ce-gallery__container {
+            float: right;
+        }
+        .ce-gallery__captions {
+            float: left;
+        }
+    }
+}
+
+/* Audiosync ... */
+.ce-frame.audiosynced {
+    .ce-gallery.ce-gallery--caption-left, 
+    .ce-gallery.ce-gallery--caption-right {
+        .ce-gallery__captions {
+            .ce-gallery__item-caption {
+                transition: opacity .2s ease, transform .2s ease;
+            }
+        }
+        &.audiosync-active {
+            .ce-gallery__captions {
+                .ce-gallery__item-caption {
+                    opacity: .5;
+                    transform: scale(.9);
+                    &.currentCaption {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+
+}
